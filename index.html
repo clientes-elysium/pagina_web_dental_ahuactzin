@@ -9,6 +9,9 @@
         content="Atención dental integral y de confianza en Puebla. Especialistas en ortodoncia, implantes y estética dental con tecnología avanzada."
         name="description">
 
+    <!-- Preload Hero Image -->
+    <link rel="preload" as="image" href="assets/1%20HOME/1%20TU%20MEJOR%20SONRISA%20COMIENZA%20HOY.jpeg" fetchpriority="high">
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/favicon_rounded.png">
 
@@ -184,18 +187,26 @@
 
     <main class="pt-20">
         <!-- Hero Section -->
-        <section class="relative min-h-[calc(100vh-5rem)] flex items-center overflow-hidden">
-            <div class="absolute inset-0 z-0">
+        <section class="relative min-h-[calc(100vh-5rem)] flex items-center overflow-hidden bg-surface-container-lowest">
+            <!-- Imagen a la derecha libre de texto -->
+            <div class="absolute right-0 top-0 bottom-0 w-full lg:w-[58%] h-full z-0">
                 <div class="w-full h-full"
-                    style="background-image: url('assets/1 HOME/1 TU MEJOR SONRISA COMIENZA HOY.jpeg'); background-size: cover; background-position: center right;">
+                    style="background-image: url('assets/1 HOME/1 TU MEJOR SONRISA COMIENZA HOY.jpeg'); background-size: cover; background-position: 10% center;">
                 </div>
+                <!-- Transición suave blanca hacia la imagen -->
                 <div
-                    class="absolute inset-0 bg-gradient-to-r from-surface-container-lowest via-surface-container-lowest/90 to-transparent">
+                    class="absolute inset-y-0 left-0 w-48 bg-gradient-to-r from-surface-container-lowest via-surface-container-lowest/80 to-transparent hidden lg:block">
+                </div>
+                <!-- Overlay suave para móviles -->
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/90 to-transparent lg:hidden">
                 </div>
             </div>
+
+            <!-- Contenido de Texto a la Izquierda -->
             <div
-                class="reveal-element relative z-10 w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg transform md:-translate-y-8">
-                <div class="max-w-2xl space-y-6">
+                class="reveal-element relative z-10 w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg transform md:-translate-y-4">
+                <div class="max-w-xl space-y-6">
                     <h1
                         class="font-headline-xl text-headline-lg-mobile md:text-headline-xl text-on-background leading-tight">
                         Tu mejor <span class="text-primary underline decoration-primary/40">sonrisa</span><br>comienza
