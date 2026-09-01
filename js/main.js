@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initFAQInteraction();
     initCTAActions();
     initTeamSlider();
+    initTestimonialSlider();
 });
 
 // Menú Móvil (Drawer Lateral)
@@ -102,23 +103,51 @@ function initFAQInteraction() {
     });
 }
 
-// Acciones de Botones y Redirección a WhatsApp
+// Acciones de Botones y Redirección a WhatsApp con Mensajes Predefinidos
 function initCTAActions() {
     const whatsappNumber = "522224106154"; // Número del consultorio
-    const buttons = document.querySelectorAll(".cta-whatsapp");
-    const bookButtons = document.querySelectorAll(".cta-booking");
+    const allButtons = document.querySelectorAll(".cta-whatsapp, .cta-booking");
 
-    const message = encodeURIComponent("Hola, quiero solicitar una cita para diagnóstico dental 🦷");
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+    function getWhatsAppMessage(element) {
+        if (element.dataset && element.dataset.whatsappMsg) {
+            return element.dataset.whatsappMsg;
+        }
+        const text = ((element.innerText || element.textContent || "") + " " + (element.getAttribute("aria-label") || "")).trim().toLowerCase();
 
-    buttons.forEach(btn => {
-        btn.addEventListener("click", () => {
-            window.open(whatsappUrl, "_blank");
-        });
-    });
+        // 1. "Agenda tu cita" -> "Hola quiero agendar una cita"
+        if (text.includes("agenda tu cita") || text.includes("agendar cita")) {
+            return "Hola quiero agendar una cita";
+        }
 
-    bookButtons.forEach(btn => {
-        btn.addEventListener("click", () => {
+        // 2. "Solicitar una consulta" / "Solicitar consulta" -> "Hola quiero una consulta con un especialista"
+        if (text.includes("solicitar una consulta") || text.includes("solicitar consulta")) {
+            return "Hola quiero una consulta con un especialista";
+        }
+
+        // 3. "Agenda hoy mismo" -> "Me gustaria una cita para el día de hoy"
+        if (text.includes("agenda hoy mismo") || text.includes("agendar hoy mismo") || text.includes("hoy mismo")) {
+            return "Me gustaria una cita para el día de hoy";
+        }
+
+        // 4. "Hablar por WhatsApp" -> "Tengo algunas dudas"
+        if (text.includes("hablar por whatsapp")) {
+            return "Tengo algunas dudas";
+        }
+
+        // 5. "WhatsApp" / "Mandar WhatsApp" / Línea footer / Botón flotante -> "Quiero hablar con alguien"
+        if (text.includes("whatsapp") || text.includes("mandar whatsapp") || text.includes("222 410 6154")) {
+            return "Quiero hablar con alguien";
+        }
+
+        // Fallback predeterminado
+        return "Hola quiero agendar una cita";
+    }
+
+    allButtons.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const messageText = getWhatsAppMessage(btn);
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(messageText)}`;
             window.open(whatsappUrl, "_blank");
         });
     });
@@ -170,4 +199,45 @@ function initTeamSlider() {
         setTimeout(toggleButtons, 100);
     }
 }
+
+// Control del Carrusel/Carrete de Testimonios
+function initTestimonialSlider() {
+    const slider = document.getElementById("testimonial-slider");
+    const prevBtn = document.getElementById("testimonial-prev-btn");
+    const nextBtn = document.getElementById("testimonial-next-btn");
+
+    if (slider && prevBtn && nextBtn) {
+        prevBtn.addEventListener("click", () => {
+            const itemWidth = slider.firstElementChild ? slider.firstElementChild.offsetWidth + 24 : 350;
+            slider.scrollBy({ left: -itemWidth, behavior: "smooth" });
+        });
+
+        nextBtn.addEventListener("click", () => {
+            const itemWidth = slider.firstElementChild ? slider.firstElementChild.offsetWidth + 24 : 350;
+            slider.scrollBy({ left: itemWidth, behavior: "smooth" });
+        });
+
+        const toggleButtons = () => {
+            const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+            if (slider.scrollLeft <= 5) {
+                prevBtn.classList.add("opacity-50", "pointer-events-none");
+            } else {
+                prevBtn.classList.remove("opacity-50", "pointer-events-none");
+            }
+
+            if (slider.scrollLeft >= maxScroll - 5) {
+                nextBtn.classList.add("opacity-50", "pointer-events-none");
+            } else {
+                nextBtn.classList.remove("opacity-50", "pointer-events-none");
+            }
+        };
+
+        slider.addEventListener("scroll", toggleButtons);
+        window.addEventListener("resize", toggleButtons);
+
+        setTimeout(toggleButtons, 100);
+    }
+}
+
 

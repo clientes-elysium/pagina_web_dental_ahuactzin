@@ -1,4 +1,6 @@
-/* Dental Ahuactzin - Estilos Personalizados */
+html {
+    scroll-padding-top: 6rem;
+}
 
 /* Variables de Colores Base */
 :root {
