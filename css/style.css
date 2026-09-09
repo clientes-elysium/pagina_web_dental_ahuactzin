@@ -113,3 +113,11 @@ html:not(.fonts-loaded) .material-symbols-outlined {
     display: none;  /* Chrome, Safari y Opera */
 }
 
+/* Videos en Pantalla Completa: visualización íntegra sin zoom ni cortes */
+video:fullscreen,
+video:-webkit-full-screen,
+video:-moz-full-screen,
+video:-ms-fullscreen {
+    object-fit: contain !important;
+    background-color: #000000 !important;
+}

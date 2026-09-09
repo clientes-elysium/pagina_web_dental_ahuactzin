@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initCTAActions();
     initTeamSlider();
     initTestimonialSlider();
+    initVideoCards();
 });
 
 // Menú Móvil (Drawer Lateral)
@@ -238,6 +239,74 @@ function initTestimonialSlider() {
 
         setTimeout(toggleButtons, 100);
     }
+}
+
+// Reproducción interactiva de videos en fichas de testimonios
+function initVideoCards() {
+    const videoContainers = document.querySelectorAll(".video-card-container");
+    videoContainers.forEach(container => {
+        const video = container.querySelector("video");
+        const poster = container.querySelector(".video-poster");
+        const overlay = container.querySelector(".video-overlay");
+        const playBtn = container.querySelector(".video-play-btn");
+        const shield = container.querySelector(".video-shield");
+
+        if (!video) return;
+
+        container.addEventListener("click", () => {
+            // Pausar otros videos si están reproduciéndose
+            document.querySelectorAll(".video-card-container video").forEach(otherVideo => {
+                if (otherVideo !== video && !otherVideo.paused) {
+                    otherVideo.pause();
+                }
+            });
+
+            if (video.classList.contains("hidden")) {
+                video.classList.remove("hidden");
+                if (poster) poster.classList.add("hidden");
+                if (overlay) overlay.classList.add("hidden");
+                if (playBtn) playBtn.classList.add("hidden");
+                if (shield) shield.classList.remove("hidden");
+                video.play();
+            }
+        });
+
+        if (shield) {
+            shield.addEventListener("click", (e) => {
+                e.stopPropagation();
+                if (video.paused) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        }
+
+        // Soporte para Safari iOS
+        video.addEventListener("webkitbeginfullscreen", () => {
+            video.style.setProperty("object-fit", "contain", "important");
+        });
+        video.addEventListener("webkitendfullscreen", () => {
+            video.style.removeProperty("object-fit");
+        });
+    });
+
+    // Control de pantalla completa estándar para mostrar el video completo sin zoom
+    function handleFullscreenChange() {
+        const fullscreenEl = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+        document.querySelectorAll(".video-card-container video").forEach(v => {
+            if (fullscreenEl === v) {
+                v.style.setProperty("object-fit", "contain", "important");
+            } else {
+                v.style.removeProperty("object-fit");
+            }
+        });
+    }
+
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    document.addEventListener("webkitfullscreenchange", handleFullscreenChange);
+    document.addEventListener("mozfullscreenchange", handleFullscreenChange);
+    document.addEventListener("MSFullscreenChange", handleFullscreenChange);
 }
 
 

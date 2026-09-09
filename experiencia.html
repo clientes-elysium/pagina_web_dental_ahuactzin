@@ -212,36 +212,86 @@
 
         <!-- Video Gallery Grid (Focus on Videos) -->
         <section class="py-stack-lg max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter justify-items-center">
 
-                <!-- Video 1: Giovanna Hernández S. -->
+                <!-- Video 1: Cecilia Linares -->
                 <div
-                    class="bg-surface-container-lowest border border-outline-variant/30 rounded-2xl overflow-hidden custom-shadow group flex flex-col justify-between">
-                    <!-- Video Container con Proporción 16:9 y Botón de Play Animado -->
-                    <div class="relative aspect-video w-full overflow-hidden bg-black shrink-0 cursor-pointer">
-                        <!-- Portada Temporal (Poster) -->
-                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                            style="background-image: url('assets/3 EXPERIENCIA DENTAL A HUACTZIN/1 Agenda tu cita.png')">
+                    class="bg-surface-container-lowest border border-outline-variant/30 rounded-2xl overflow-hidden custom-shadow group flex flex-col justify-between max-w-[280px] sm:max-w-[300px] mx-auto w-full">
+                    <!-- Video Container con Proporción Vertical Nativa 9:16 Compacta -->
+                    <div class="relative aspect-[9/16] w-full overflow-hidden bg-black shrink-0 cursor-pointer video-card-container rounded-t-2xl"
+                        style="aspect-ratio: 9/16; border-top-left-radius: 1rem; border-top-right-radius: 1rem; -webkit-mask-image: -webkit-radial-gradient(white, black); transform: translateZ(0);">
+                        <!-- Portada (Poster) -->
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 video-poster rounded-t-2xl"
+                            style="background-image: url('assets/videos/Cecilia Linares.png')">
                         </div>
                         <!-- Overlay oscuro -->
-                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/20 transition-all duration-300">
+                        <div class="absolute inset-0 bg-black/25 group-hover:bg-black/10 transition-all duration-300 video-overlay rounded-t-2xl">
                         </div>
 
                         <!-- Botón de Play flotante -->
-                        <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="absolute inset-0 flex items-center justify-center video-play-btn">
                             <div
                                 class="w-14 h-14 rounded-full bg-primary/95 text-white flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:bg-secondary">
                                 <span class="material-symbols-outlined text-3xl ml-0.5"
                                     style="font-variation-settings: 'FILL' 1;">play_arrow</span>
                             </div>
                         </div>
+
+                        <!-- Video HTML5 con preload="none" y object-cover para mostrar el video al 100% sin franjas -->
+                        <video class="hidden w-full h-full object-cover rounded-t-2xl" controls preload="none"
+                            disablepictureinpicture controlslist="nodownload noplaybackrate nopictureinpicture" disableremoteplayback
+                            style="border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+                            <source src="assets/videos/Testimonio 1 MOV CECILIA LINARES (1).mp4" type="video/mp4">
+                            Tu navegador no soporta reproducción de video.
+                        </video>
+                        <!-- Capa protectora que bloquea el menú de herramientas flotante del navegador y permite pausar/reproducir con clic -->
+                        <div class="video-shield absolute inset-x-0 top-0 bottom-14 z-10 cursor-pointer hidden"></div>
                     </div>
 
                     <!-- Información y Cita Corta -->
-                    <div class="p-6 flex flex-col justify-between flex-grow space-y-4">
+                    <div class="p-5 sm:p-6 flex flex-col justify-between flex-grow space-y-4">
                         <div class="space-y-2">
-                            <span
-                                class="px-2.5 py-0.5 rounded bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider w-fit inline-block">Higiene y prevención</span>
+                            <h3 class="font-headline-md font-bold text-on-background text-lg leading-snug">Cecilia Linares</h3>
+                            <p class="text-on-surface-variant text-sm italic leading-relaxed">
+                                "La Dra. Denise fué bastante cuidadosa y me preguntaba ¿cómo te sientes?,osea es un acompañamiento a pasito, como que te lleva de la mano"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 2: Giovanna Hernández S. -->
+                <div
+                    class="bg-surface-container-lowest border border-outline-variant/30 rounded-2xl overflow-hidden custom-shadow group flex flex-col justify-between max-w-[280px] sm:max-w-[300px] mx-auto w-full">
+                    <!-- Video Container con Proporción Vertical Nativa 9:16 Compacta -->
+                    <div class="relative aspect-[9/16] w-full overflow-hidden bg-black shrink-0 cursor-pointer video-card-container rounded-t-2xl"
+                        style="aspect-ratio: 9/16; border-top-left-radius: 1rem; border-top-right-radius: 1rem; -webkit-mask-image: -webkit-radial-gradient(white, black); transform: translateZ(0);">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 video-poster rounded-t-2xl"
+                            style="background-image: url('assets/videos/Giovanna Hernandez.png')">
+                        </div>
+                        <div class="absolute inset-0 bg-black/25 group-hover:bg-black/10 transition-all duration-300 video-overlay rounded-t-2xl">
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center video-play-btn">
+                            <div
+                                class="w-14 h-14 rounded-full bg-primary/95 text-white flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:bg-secondary">
+                                <span class="material-symbols-outlined text-3xl ml-0.5"
+                                    style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                            </div>
+                        </div>
+
+                        <!-- Video HTML5 con preload="none" y object-cover para mostrar el video al 100% sin franjas -->
+                        <video class="hidden w-full h-full object-cover rounded-t-2xl" controls preload="none"
+                            disablepictureinpicture controlslist="nodownload noplaybackrate nopictureinpicture" disableremoteplayback
+                            style="border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+                            <source src="assets/videos/Testimonio 2 (1) MOV GIOVANNA HERNÁNDEZ (1).mp4" type="video/mp4">
+                            Tu navegador no soporta reproducción de video.
+                        </video>
+                        <!-- Capa protectora que bloquea el menú de herramientas flotante del navegador y permite pausar/reproducir con clic -->
+                        <div class="video-shield absolute inset-x-0 top-0 bottom-14 z-10 cursor-pointer hidden"></div>
+                    </div>
+
+                    <!-- Información y Cita Corta -->
+                    <div class="p-5 sm:p-6 flex flex-col justify-between flex-grow space-y-4">
+                        <div class="space-y-2">
                             <h3 class="font-headline-md font-bold text-on-background text-lg leading-snug">Giovanna
                                 Hernández S.</h3>
                             <p class="text-on-surface-variant text-sm italic leading-relaxed">
@@ -251,69 +301,43 @@
                     </div>
                 </div>
 
-                <!-- Video 2: Cecilia Linares -->
+                <!-- Video 3: Ivette Valderrabano -->
                 <div
-                    class="bg-surface-container-lowest border border-outline-variant/30 rounded-2xl overflow-hidden custom-shadow group flex flex-col justify-between">
-                    <!-- Video Container con Proporción 16:9 -->
-                    <div class="relative aspect-video w-full overflow-hidden bg-black shrink-0 cursor-pointer">
-                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                            style="background-image: url('assets/3 EXPERIENCIA DENTAL A HUACTZIN/3 Te explicamos tu tratamiento.JPG')">
+                    class="bg-surface-container-lowest border border-outline-variant/30 rounded-2xl overflow-hidden custom-shadow group flex flex-col justify-between max-w-[280px] sm:max-w-[300px] mx-auto w-full">
+                    <!-- Video Container con Proporción Vertical Nativa 9:16 Compacta -->
+                    <div class="relative aspect-[9/16] w-full overflow-hidden bg-black shrink-0 cursor-pointer video-card-container rounded-t-2xl"
+                        style="aspect-ratio: 9/16; border-top-left-radius: 1rem; border-top-right-radius: 1rem; -webkit-mask-image: -webkit-radial-gradient(white, black); transform: translateZ(0);">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 video-poster rounded-t-2xl"
+                            style="background-image: url('assets/videos/Ivette Valderrabano.png')">
                         </div>
-                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/20 transition-all duration-300">
+                        <div class="absolute inset-0 bg-black/25 group-hover:bg-black/10 transition-all duration-300 video-overlay rounded-t-2xl">
                         </div>
-                        <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="absolute inset-0 flex items-center justify-center video-play-btn">
                             <div
                                 class="w-14 h-14 rounded-full bg-primary/95 text-white flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:bg-secondary">
                                 <span class="material-symbols-outlined text-3xl ml-0.5"
                                     style="font-variation-settings: 'FILL' 1;">play_arrow</span>
                             </div>
                         </div>
+
+                        <!-- Video HTML5 con preload="none" y object-cover para mostrar el video al 100% sin franjas -->
+                        <video class="hidden w-full h-full object-cover rounded-t-2xl" controls preload="none"
+                            disablepictureinpicture controlslist="nodownload noplaybackrate nopictureinpicture" disableremoteplayback
+                            style="border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+                            <source src="assets/videos/Testimonio 3 MOV IVETTE VALDERRABANO.mp4" type="video/mp4">
+                            <source src="assets/videos/Testimonio 3 MOV IVETTE VALDERRABANO.mov" type="video/quicktime">
+                            Tu navegador no soporta reproducción de video.
+                        </video>
+                        <!-- Capa protectora que bloquea el menú de herramientas flotante del navegador y permite pausar/reproducir con clic -->
+                        <div class="video-shield absolute inset-x-0 top-0 bottom-14 z-10 cursor-pointer hidden"></div>
                     </div>
 
                     <!-- Información y Cita Corta -->
-                    <div class="p-6 flex flex-col justify-between flex-grow space-y-4">
+                    <div class="p-5 sm:p-6 flex flex-col justify-between flex-grow space-y-4">
                         <div class="space-y-2">
-                            <span
-                                class="px-2.5 py-0.5 rounded bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider w-fit inline-block">Terapia miofacial</span>
-                            <h3 class="font-headline-md font-bold text-on-background text-lg leading-snug">Cecilia Linares
-                            </h3>
+                            <h3 class="font-headline-md font-bold text-on-background text-lg leading-snug">Ivette Valderrabano</h3>
                             <p class="text-on-surface-variant text-sm italic leading-relaxed">
-                                "La Dra. Denise fué bastante cuidadosa y me preguntaba ¿cómo te sientes?,osea es un acompañamiento a pasito, como que te lleva de la mano"
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 3: Dra. Ana López -->
-                <div
-                    class="bg-surface-container-lowest border border-outline-variant/30 rounded-2xl overflow-hidden custom-shadow group flex flex-col justify-between">
-                    <!-- Video Container con Proporción 16:9 -->
-                    <div class="relative aspect-video w-full overflow-hidden bg-black shrink-0 cursor-pointer">
-                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                            style="background-image: url('assets/3 EXPERIENCIA DENTAL A HUACTZIN/4 comenzamos tu tratamiento.jpeg')">
-                        </div>
-                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/20 transition-all duration-300">
-                        </div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div
-                                class="w-14 h-14 rounded-full bg-primary/95 text-white flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:bg-secondary">
-                                <span class="material-symbols-outlined text-3xl ml-0.5"
-                                    style="font-variation-settings: 'FILL' 1;">play_arrow</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Información y Cita Corta -->
-                    <div class="p-6 flex flex-col justify-between flex-grow space-y-4">
-                        <div class="space-y-2">
-                            <span
-                                class="px-2.5 py-0.5 rounded bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider w-fit inline-block">Rehabilitación
-                                Oral</span>
-                            <h3 class="font-headline-md font-bold text-on-background text-lg leading-snug">Dra. Ana
-                                López</h3>
-                            <p class="text-on-surface-variant text-sm italic leading-relaxed">
-                                "La precisión clínica de los doctores y los materiales biocompatibles me devolvieron la
-                                funcionalidad y estética completa en mis coronas. Totalmente agradecida con ellos."
+                                "Regresé porque me senti a gusto, por el trato y la calidad del trabajo que se hace, en una palabra excelente"
                             </p>
                         </div>
                     </div>
