@@ -319,7 +319,12 @@
                 <div
                     class="hover-card flex flex-col md:flex-row bg-surface-container-lowest border border-outline-variant/30 rounded-2xl overflow-hidden custom-shadow hover:-translate-y-1 transition-all duration-300">
                     <div class="w-full md:w-[40%] shrink-0 h-48 md:h-auto overflow-hidden relative">
-                        <div class="w-full h-full bg-cover bg-center transition-transform duration-500 hover:scale-105"
+                        <!-- Imagen para celular (< md) -->
+                        <div class="w-full h-full bg-cover bg-center transition-transform duration-500 hover:scale-105 block md:hidden"
+                            style="background-image: url('assets/6 CUIDAMOS DE TI EN CADA DETALLE/Muestra de apoyo para tu tratamiento movil.jpeg')">
+                        </div>
+                        <!-- Imagen para computadora (>= md) -->
+                        <div class="w-full h-full bg-cover bg-center transition-transform duration-500 hover:scale-105 hidden md:block"
                             style="background-image: url('assets/6 CUIDAMOS DE TI EN CADA DETALLE/Muestra de apoyo para tu tratamiento LISTO.JPG')">
                         </div>
                     </div>
