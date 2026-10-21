@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dentalahuactzin.com/sitemap.xml
