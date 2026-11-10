@@ -121,3 +121,13 @@ video:-ms-fullscreen {
     object-fit: contain !important;
     background-color: #000000 !important;
 }
+
+/* Alineación uniforme de 'Tratamientos disponibles' en tarjetas de servicios */
+@media (min-width: 768px) {
+    .service-card-title {
+        min-height: 1.75rem;
+    }
+    .service-card-desc {
+        min-height: 6rem;
+    }
+}
